@@ -19,7 +19,7 @@
 #define L7_ENUM_GNUTELLA        4
 #define L7_ENUM_SKYPETOSKYPE    5
 #define L7_ENUM_SKYPEOUT        6
-#define L7_ENUM_NETGEAREVA      7   /* add by pingod, 07/12/2008*/
+#define L7_ENUM_NETGEAREVA      7   /*foxconn add by pingod, 07/12/2008*/
 #define L7_ENUM_TOTAL           L7_ENUM_NETGEAREVA    /* make this equal the to the last app */
 
 #define APP_DATA_BUF_MAX_LEN    8192
@@ -107,7 +107,7 @@ typedef struct _proto_regexp
     char * const proto_name;
     //unsigned char proto_pri;
     unsigned char proto_enum;
-    int proto_packet_count;/* added by Max Ding for test, 10/26/2007 */
+    int proto_packet_count;/*Foxconn added by Max Ding for test, 10/26/2007 */
     char *proto_regexp;
 } s_proto_regexp;
 
@@ -116,7 +116,7 @@ typedef struct _pattern_cache {
     regexp * pattern;
     struct pattern_cache * next;
     //unsigned char proto_pri;
-    unsigned char proto_enum;/* added by Max Ding, 10/12/2007 */
+    unsigned char proto_enum;/*Foxconn added by Max Ding, 10/12/2007 */
     char *proto_name;
 } s_pattern_cache;
 
@@ -126,13 +126,13 @@ typedef struct S_ConnHashEntry
 {
     unsigned short iInNextConnId;
     unsigned short iOutNextConnId;
-    BYTE           bEntryReady;    // added, nathan, 07/06/2006 @cdrouter_ipsec
+    BYTE           bEntryReady;    //Foxconn added, nathan, 07/06/2006 @cdrouter_ipsec
 } T_ConnHashEntry;
 
 typedef struct S_ConnEntry
 {
     T_ConnHashEntry tHash;
-    BYTE bEntryReady;// add, FredPeng, 01/11/2008@fvs114
+    BYTE bEntryReady;//Foxconn add, FredPeng, 01/11/2008@fvs114
     short iConnId;
     short iAlg;
 #define wServerEspSpiHalf2 iAlgSession    //Ambit add, Peter Chen, 10/28/2004
@@ -153,14 +153,14 @@ typedef struct S_ConnEntry
     BYTE bProtocol; /* same with ip->proto */
     BYTE bConnState:4,
          bNatType:4; /*Basic NAT, NAPT, Port Forwarding */
-/*  added start, Eddic, 11/25/2004 */
+/* Foxconn added start, Eddic, 11/25/2004 */
     BYTE bSelf:4,
-         bTcpStatus:4;/*  modified by Max Ding, 12/17/2007 for Dos log */
+         bTcpStatus:4;/* Foxconn modified by Max Ding, 12/17/2007 for Dos log */
 	UINT32 dwTimeOut;
-/*  added end, Eddic, 11/25/2004 */
+/* Foxconn added end, Eddic, 11/25/2004 */
 
 //Ambit add start, Peter Chen, 12/22/2004
-// modify start, Tim Liu, 10/18/2005
+//Foxconn modify start, Tim Liu, 10/18/2005
 #ifdef __VXWORKS__
     struct rtentry  *pOut_rtentry;
     struct rtentry  *pIn_rtentry;
@@ -168,10 +168,10 @@ typedef struct S_ConnEntry
     RT_HANDLE pOut_rtentry;
     RT_HANDLE pIn_rtentry;
 #endif
-// modify end, Tim Liu, 10/18/2005
+//Foxconn modify end, Tim Liu, 10/18/2005
 //Ambit add end, Peter Chen, 12/22/2004
 
-    /* added start by EricHuang, 7/20/2005*/
+    /*Foxconn added start by EricHuang, 7/20/2005*/
 #ifdef INCLUDE_TMSS
     #define URL_DENY    0
     #define URL_ALLOW   1
@@ -179,14 +179,14 @@ typedef struct S_ConnEntry
     char tmssURLHostString[256];
     char tmssURLPathString[512];
 #endif
-    /* added end by EricHuang, 7/20/2005*/
-    /* add start, Max Ding, 10/13/2007 */
+    /*Foxconn added end by EricHuang, 7/20/2005*/
+    /*Foxconn add start, Max Ding, 10/13/2007 */
 #ifdef INCLUDE_L7_FILTER
     BYTE packet_count;
     BYTE proto_enum;
 #endif
-    /* add end, Max Ding, 10/13/2007 */
-    short wCtlConnId;   /* add,Zz Shan@ftp_ctl_timeout 09/09/2008*/
+    /*Foxconn add end, Max Ding, 10/13/2007 */
+    short wCtlConnId;   /*Foxconn add,Zz Shan@ftp_ctl_timeout 09/09/2008*/
 
 } T_ConnEntry;
 
